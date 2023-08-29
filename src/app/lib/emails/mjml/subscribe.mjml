@@ -1,0 +1,206 @@
+<mjml>
+    <mj-head>
+        <mj-font
+            name="PT Sans"
+            href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700"
+        />
+        <mj-font
+            name="VT323"
+            href="https://fonts.googleapis.com/css2?family=VT323"
+        />
+        <mj-attributes>
+            <mj-all 
+                color="#D9ECFF"
+                margin="0"
+                padding="0"
+            />
+
+            <mj-class
+                name="section"
+                padding-left="24px"
+                padding-right="24px"
+                text-align="left"
+            />
+
+            <mj-class
+                name="title-section"
+                padding-top="24px"
+                padding-bottom="40px"
+            />
+
+            <mj-class
+                name="title"
+                white-space="nowrap"
+                font-size="40px"
+                font-weight="bold"
+                font-family="PT Sans, Sans Serif"
+                line-height="48px"
+            />
+            <mj-class
+                name="title-icon"
+                background-color="none"
+                padding-right="24px"
+            />
+
+            <mj-class
+                name="thank-you"
+                border="1px solid #D9ECFF"
+            />
+            <mj-class
+                name="thank-you-image"
+                width="320px"
+                padding-top="24px"
+                padding-bottom="24px"
+            />
+
+            <mj-class
+                name="text-section"
+                padding-top="40px"
+            />
+            <mj-class
+                name="text"
+                font-family="VT323, monospace"
+                font-size="24px"
+                text-align="justify"
+                line-height="32px"
+                padding-bottom="40px"
+            />
+
+            <mj-class
+                name="footer-text"
+                font-family="VT323, monospace"
+                font-size="16px"
+                line-height="16px"
+                padding-bottom="0px"
+            />
+        </mj-attributes>
+        <mj-style>
+            .title h1{
+                font-family: "PT Sans", Sans-serif;
+                position: relative;
+            }
+
+            .title h1 span {
+                font-size: 40px;
+                padding-left: 8px;
+                line-height: 52px;
+                position: absolute;
+            }
+
+            .title h1 .titleA {
+                color: blue;
+                transform: translate(2px, 0px);
+            }
+            .title h1 .titleB {
+                color: red;
+                transform: translate(0, 2px);
+            }
+            .title h1 .titleC {
+                color: rgb(0, 255, 0);
+                transform: translate(0, -2px);
+            }
+
+            .unsuscribe a {
+                font-family: "VT323" , monospace;
+                color: #D9ECFF;
+                opacity: 0.4;
+                text-decoration: underline;
+                outline: none;
+                border: none;
+            }
+        </mj-style>
+    </mj-head>
+    <mj-body 
+        background-color="#0E0E0E"
+    >
+
+        <mj-section 
+            mj-class="title-section section" 
+        >
+        <mj-group>
+            <mj-column>
+            <!-- </mj-column> -->
+            <!-- <mj-column width="80%"> -->
+                <mj-text css-class="title">
+                    <h1> 
+                        <image width="40px" href="localhost:3000" src="https://ik.imagekit.io/k7jfxtbzb/logo.svg?updatedAt=1690392138391" />
+                        <span>HELLO AGAIN</span>
+                    </h1>
+                </mj-text>
+            </mj-column>
+        </mj-group>
+        </mj-section>
+
+        <mj-section mj-class="section">
+            <mj-column mj-class="thank-you">
+                <mj-image
+                    mj-class="thank-you-image"
+                    src="https://ik.imagekit.io/k7jfxtbzb/TY%201.png?updatedAt=1690298545024"/>
+            </mj-column>
+        </mj-section>
+
+        <mj-section mj-class="text-section section">
+            <mj-column>
+                <mj-text mj-class="text">
+                    Thank you for subscribing to my newsletter. If you have any question regarding anything feel free to send me a message. I would be more than happy to answer you.
+                </mj-text>
+            </mj-column>
+        </mj-section>
+
+        <mj-section mj-class="section">
+            <mj-column>
+                <mj-image width="160px" align="right"
+                    src="https://ik.imagekit.io/k7jfxtbzb/AlexPeresson.png?updatedAt=169030775352"
+                />
+                <mj-spacer height="40px" />
+            </mj-column>
+        </mj-section>
+
+        <mj-section mj-class="section">
+            <mj-column>
+                <mj-divider width="80%" mj-class="divider" border-width="1px" border-style="solid" border-color="lightgrey"/>
+            </mj-column>
+        </mj-section>
+
+        <mj-section mj-class="section">
+
+            <mj-column>
+                <mj-spacer height="8px" />
+                <mj-text align="center" mj-class="footer-text">from Alex Peresson</mj-text>
+                <mj-text align="center" mj-class="footer-text">you are receiving this email because you opted <br/> in via my website</mj-text>
+                <mj-spacer height="8px" />
+                <mj-text align="center" css-class="unsuscribe"> <a href="#unsubscribe"> unsubscribe </a> </mj-text>
+                <mj-spacer height="16px" />
+            </mj-column>
+        </mj-section>
+
+        <mj-section mj-class="section" >
+            <mj-column>
+                <mj-social mode="horizontal" icon-size="36px" padding-bottom="16px">
+                    <mj-social-element
+                        padding="4px"
+                        href="#linkedin"
+                        src="https://ik.imagekit.io/k7jfxtbzb/icons8-linkedin-50.png?updatedAt=1690392217868"
+                    />
+                    <mj-social-element
+                        padding="4px"
+                        href="#website"
+                        src="https://ik.imagekit.io/k7jfxtbzb/icons8-website-50.png?updatedAt=1690392258368"
+                    />
+                    <mj-social-element
+                        padding="4px"
+                        href="#github"
+                        src="https://ik.imagekit.io/k7jfxtbzb/icons8-github-50.png?updatedAt=1690392299706"
+                    />
+                    <mj-social-element
+                        padding="4px"
+                        href="#instagram"
+                        src="https://ik.imagekit.io/k7jfxtbzb/icons8-instagram-50.png?updatedAt=1690392325625"
+                    />
+                </mj-social>
+            </mj-column>
+        </mj-section/>
+
+    </mj-body>
+</mjml>
+

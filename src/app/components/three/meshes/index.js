@@ -12,6 +12,7 @@ import PlaneReflector from "./PlaneReflector"
 
 import { selectComputerIsVisible } from "@/app/lib/redux/slices/three"
 import { Box3, BoxHelper, MathUtils, Vector3 } from "three"
+import constants from "@/app/lib/three/constants"
 
 
 const start = [0, -0.07, 1.071]
@@ -31,9 +32,7 @@ const Meshes = () => {
         end : [0,0,0],
         isMounted: false,
     })
-    // useHelper(ref, BoxHelper, 'cyan')
 
-    // {"end":[0.3757000000000009,0,0.5855999999999995]}
     const controls = useControls(
        { scroll : folder({
             rotation: -0.25,
@@ -49,14 +48,16 @@ const Meshes = () => {
 
     useEffect(
         () => {
-            if (camera.name !== 'default-camera' || !state.isMounted || !ref.current) return
+            if (camera.name !== 'default-camera' || !state.isMounted) return
 
             const rotation = ref.current.rotation.y
+
             ref.current.rotation.y = 0
             
             if (!bbRef.current) {
                 bbRef.current = new Box3().setFromObject(ref.current)
             }
+
             const boundingScale = new Vector3().copy(bbRef.current.max).sub(bbRef.current.min)
             const boundingRatio = boundingScale.y / boundingScale.x
 
@@ -68,12 +69,15 @@ const Meshes = () => {
             const expectedStartHeight = desiredStartWidth * boundingRatio
             const startDist = (boundingScale.y * size.height ) / (2 * expectedStartHeight * Math.tan(vFov / 2))
             const zStart = -startDist - 0.5 * boundingScale.z
+            
             const start = [0, 0, zStart]
 
             const sizeGuide = document.getElementById('guide-2')
             const guideWidth = sizeGuide.getBoundingClientRect().width
 
-            const desiredEndWidth = screen.width >= 1024 ? 0.8 * guideWidth : 0.4 * size.width
+
+            const isFullscreen = size.width <= constants.fullscreenThreshold
+            const desiredEndWidth = !isFullscreen ? 0.8 * guideWidth : 0.2 * size.width
             const expectedEndHeight = desiredEndWidth * boundingRatio
             const endDist = (boundingScale.y * size.height) / (2 * expectedEndHeight * Math.tan(vFov / 2))
             const zEnd = -endDist - 0.5 * boundingScale.z
@@ -81,7 +85,11 @@ const Meshes = () => {
             const visibleHeight = - 2 * Math.tan(vFov / 2) * zEnd
             const visibleWidth = visibleHeight * size.width / size.height
 
-            const x = screen.width >= 1024
+
+            ref.current.position.x = start[0]
+            ref.current.position.y = start[1]
+
+            const x = !isFullscreen
                 ? visibleWidth / 2 - boundingScale.x * 1.1 
                 :  visibleWidth / 2 + boundingScale.x
             const end = [x, 0, zEnd]
@@ -93,18 +101,15 @@ const Meshes = () => {
             }))
 
             invalidate()
-        } , [camera, get, size, state.isMounted]
+        } , [camera, size, get, state.isMounted]
     )
-
-    console.log(state.start, ref.current)
 
     useFrame(
         () => {
-            // console.log(scroll)
             const { c1, c2, c3 , rotation } = controls
             
             const r1 = scroll.range(0, 0.5)
-            const r2 = scroll.range(0.3, 0.50)
+            const r2 = scroll.range(0.3, 0.70)
             const r3 = scroll.range(0.2, 0.80)
 
             const curve1 = c1.evaluate(r1)
@@ -115,10 +120,6 @@ const Meshes = () => {
             ref.current.rotation.y = mapLinear(curve2, 0, 1, 0, 2 * Math.PI + rotation)
             ref.current.position.x = mapLinear(curve3, 0, 1, state.start[0], state.end[0])
             
-            // ref.current.position.y = mapLinear( r1, 0, 1, startY, endY )
-            // computerRef.current.position.z = mapLinear( curve1, 0, 1, startZ, endZ )
-            // computerRef.current.rotation.y = mapLinear( curve2, 0, 1, 0, 2 * Math.PI + rotation )
-            // computerRef.current.position.x = mapLinear( curve3, 0, 1, startX, endX )   
         }
     )
 
@@ -127,9 +128,9 @@ const Meshes = () => {
             <group visible={true}
                 ref={ref} 
                 // position-z={sta.te.start[2]}
-                // position-z={state.start[2]}
-                // position-y={state.start[1]}
-                // position-x={state.start[0]}
+                position-z={state.start[2]}
+                position-y={state.start[1]}
+                position-x={state.start[0]}
                 // position={[0, 0, -1.715450951875592]} 
                 // rotation-y={controls.rotation}
             >

@@ -1,0 +1,73 @@
+@import '../../var';
+
+$shift : 0.02em;
+
+.title {
+    overflow-x: visible;
+    width: calc(100vw - 24px);
+    font-family: 'PT Sans';
+
+    h1, span {
+        font-size: 124px;
+        line-height: 124px;
+        text-transform: uppercase;
+
+        @media only screen and (max-width : 768px) {
+            font-size: 88px;
+            line-height: 88px;
+        }
+
+        @media only screen and (max-width : 426px) {
+            font-size: 36px;
+            line-height: 36px;
+        }
+    }
+
+    h1 {
+        color: $white;
+        position: relative;
+
+    }
+
+    span {
+        font-weight: bold;
+        transition: transform 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+        position: absolute;
+        width: calc(100vw - 24px);
+    }
+
+    .green {
+        color: $green;
+        transform: translate($shift, 0);
+    }
+
+    .red {
+        color: $red;
+        transform: translate(-$shift, 0);
+
+    }
+
+    .blue {
+        color: $blue;
+        transform: translate(0, $shift);
+
+    }
+
+    &:hover {
+
+        .green {
+            transform: translate(-$shift, 0);
+        }
+
+        .red {
+            transform: translate($shift, 0);
+        }
+
+        .blue {
+            transform: translate(0, -$shift);
+        }
+        
+    }
+
+
+}

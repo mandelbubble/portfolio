@@ -8,11 +8,12 @@ import styles from '@/app/styles/components/windows/command-prompt.module.scss'
 
 const CommandPrompt = ({
     className = '', 
-    children 
+    children,
+    customResolution,
 }) => {
     return (
         <Window
-            style={constants.programs.cmd.resolution}
+            style={customResolution ? {} : constants.programs.cmd.resolution}
             className={className}
             label={constants.programs.cmd.label}
             iconPath={constants.programs.cmd.icon}

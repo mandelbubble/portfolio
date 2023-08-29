@@ -1,0 +1,84 @@
+.help {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 4px;
+
+    .spacer {
+        flex: 1;
+        margin-left: 4px;
+        margin-right: 4px;
+        margin-bottom: 4px;
+        border-bottom: silver dashed 1px;
+    }
+}
+
+.focus {
+    background: silver;
+    color: black;
+
+    .spacer {
+        border-bottom: black dashed 1px;
+    }
+}
+
+.inputWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+
+    span {
+        flex: 1
+    }
+
+    span>input {
+        width: 100%;
+
+        border: none;
+        outline: none;
+        background: none;
+
+        font-family: 'DOS', monospace;
+        font-size: 16px;
+        color: silver;
+    }
+
+    .placeholder {
+        opacity: 0.4;
+        pointer-events: none;
+        transform: translateY(-100%);
+    }
+}
+
+.about , .whoami, .ticTacToe {
+    pre {
+        font-size: 16px;
+        font-family: 'DOS', monospace;
+        white-space: break-spaces;
+    }
+}
+
+.about {
+    ul {
+        padding-left: 24px;
+    }
+}
+
+.ticTacToe {
+
+    .ticTacToeInputHolder {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    input {
+        flex: 1;
+        margin-left: 4px;
+        background: none;
+        border: none;
+        outline: none;
+        font-family: 'DOS', monospace;
+        font-size: 16px;
+        color: silver;
+    }
+}

@@ -96,7 +96,8 @@ const constants =  {
             // displacementMap: '/3D/ground/textures/Displacement.png',
             // normalMap: '/3D/ground/textures/NormalGL.png',
         }
-    }
+    },
+    fullscreenThreshold : 1024,
 }
 
 export default constants

@@ -3,6 +3,8 @@
     height: 100%;
 }
 
+$margin : 24px;
+
 .guide {
     position: absolute;
     width: calc(100vw - 16px);
@@ -14,8 +16,8 @@
 }
 
 .g1 {
-    width: calc(100% - 48px);
-    margin-left: 24px;
+    width: calc(100% - ($margin * 2));
+    margin-left: $margin;
     height: 100%;
     position: relative;
 
@@ -27,5 +29,28 @@
     position: absolute;
     right: 0;
     background: green;
-    opacity: 0.1;
+    opacity: 0;
+}
+
+.html {
+    position: relative;
+    height: 100vh;
+    width : calc((100vw - ($margin * 2)) * (100 - 38.2)/100);
+    top: 300vh;
+    display: flex;
+    flex-direction: column;
+    margin-left: $margin;
+    padding-top: 60px;
+    padding-bottom: 32px;
+
+    @media only screen and (max-width : 1025px) {
+        width: calc(100% - (2 * $margin));
+        margin-left: 0;
+        padding-left: $margin;
+    }
+
+
+    .cmd {
+        flex: 1
+    }
 }

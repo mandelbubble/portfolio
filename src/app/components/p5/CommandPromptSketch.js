@@ -61,7 +61,7 @@ const CommandPromptSketch = () => {
             zIndex: -2,
             // zIndex: -99,
             transformOrigin: 'top left',
-            // transform: ' scale(0.1)',
+            transform: ' scale(0.1)',
         }) , []
     )
 
