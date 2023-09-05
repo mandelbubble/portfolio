@@ -26,11 +26,19 @@
     flex-direction: row;
     align-items: baseline;
 
+    .form { 
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        position: relative;
+    }
+
+
     span {
         flex: 1
     }
 
-    span>input {
+    .input {
         width: 100%;
 
         border: none;
@@ -40,6 +48,14 @@
         font-family: 'DOS', monospace;
         font-size: 16px;
         color: silver;
+
+        @media only screen and (max-width : 426px) {
+            font-size: 14px;
+        }
+
+        @media only screen and (max-width : 376px) {
+            font-size: 12px;
+        }
     }
 
     .placeholder {
@@ -57,6 +73,7 @@
     }
 }
 
+
 .about {
     ul {
         padding-left: 24px;
@@ -69,7 +86,17 @@
         display: flex;
         flex-direction: row;
         align-items: center;
+        // white-space: pre;
+
+        @media only screen and (max-width : 426px) {
+            // flex-direction: column;
+        }
+
+        // @media only screen and (max-width : 376px) {
+        //     font-size: 12px;
+        // }
     }
+
 
     input {
         flex: 1;
@@ -80,5 +107,14 @@
         font-family: 'DOS', monospace;
         font-size: 16px;
         color: silver;
+        
+        @media only screen and (max-width : 426px) {
+            max-width: 32px;
+            font-size: 14px;
+        }
+
+        @media only screen and (max-width : 376px) {
+            font-size: 12px;
+        }
     }
 }

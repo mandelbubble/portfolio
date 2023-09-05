@@ -29,43 +29,40 @@ const Input = ({
         } , [onChange]
     )
 
-    const onKeyDown = useCallback(
+    const onKeyUp = useCallback(
         event => {
             const { key } = event
 
-            if (['Tab', 'Enter', 'ArrowUp', 'ArrowDown'].find(k => k === key)) {
+            if (['ArrowUp', 'ArrowDown'].find(k => k === key)) {
                 event.preventDefault()
-
-                if (key === 'Enter') onSubmit()
-                else if (key === 'Tab') {
-                    
-                    onChange(placeholder === settings.subscribePlaceholder 
-                        ? "subscribe"
-                        : placeholder 
-                    )
-                }
-                else onArrowDown(key)
-
+                onArrowDown(key)
                 event.stopPropagation()
             }
             return false
-        } , [onSubmit, placeholder, onArrowDown, onChange]
+
+        } , [onArrowDown]
     )
 
-    const preventDefault = useCallback(
-        e => e.preventDefault() , []
+    const onFormSubmit = useCallback(
+        e => {
+            e.preventDefault()
+            onSubmit()
+            e.stopPropagation()
+        } , [onSubmit]
     )
 
     return (
         <div className={styles.inputWrapper}>
             { settings.prefix }
             <span>
-                <input ref={ref}
-                    value={value}
-                    onChange={onInputChange}
-                    onKeyDown={onKeyDown}
-                    onSubmit={preventDefault}
-                />
+                <form onSubmit={onFormSubmit} className={styles.form}>
+                    <input ref={ref}
+                        className={styles.input}
+                        value={value}
+                        onChange={onInputChange}
+                        onKeyUp={onKeyUp}
+                    />
+                </form>
                 <div className={styles.placeholder}>
                     {placeholder}
                 </div>

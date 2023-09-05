@@ -1,0 +1,69 @@
+@import '../../var';
+
+.button {
+   @include border-layout;
+
+   outline: none;
+   border: none;
+
+   width: 160px;
+   height: 54px;
+
+   border-radius: 4px;
+
+   font-family: 'PT Sans';
+   font-size: 24px;
+   line-height:  24px;
+   text-transform: uppercase;
+
+   background: $white;
+
+   transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+   color: $white;
+   cursor: pointer;
+}
+
+.disabled {
+    background: lighten($color: $black, $amount: 20);
+
+    & > * {
+        color: lighten($color: $black, $amount: 20) !important;
+    }
+    // background: red;
+    pointer-events: none;
+}
+
+.content {
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transform: translateZ(-1px);
+
+}
+
+.span {
+    position: relative;
+    padding-bottom: 2px;
+    @include gradient-decoration;
+}
+
+.loading {
+    rect:nth-child(1) {
+        fill: $red;
+    }
+    rect:nth-child(2) {
+        fill: $green;
+    }
+    rect:nth-child(3) {
+        fill: $blue;
+    }
+}
+
+.success {
+    width: 24px;
+    height: 24px;
+    fill: $green;
+    margin-left: 8px;
+}

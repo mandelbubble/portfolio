@@ -1,5 +1,7 @@
-import '@/app/styles/globals.scss'
+import Menu from './components/ui/Menu'
 import ReduxProvider from './components/utils/ReduxProvider'
+
+import '@/app/styles/globals.scss'
 
 export const metadata = {
   title: 'Alex Peresson Portfolio',
@@ -12,6 +14,7 @@ export default function RootLayout({ children }) {
       <body>
         <ReduxProvider>
           {children}
+          <Menu/>
         </ReduxProvider>
       </body>
     </html>

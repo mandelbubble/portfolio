@@ -66,7 +66,7 @@ const TicTacToeGame = ({
 
     return (
         <div className={styles.ticTacToeInputHolder}>
-            { label }
+            <div>{ label }</div>
             <input
                 ref={ref}
                 value={value}

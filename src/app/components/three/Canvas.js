@@ -25,8 +25,17 @@ const Canvas = () => {
     const renderLoader = useMemo(
         () => {
             return (
-                <Html>
+                <Html fullscreen>
+                    <div style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100vw',
+                        height: '100vh',
+                        background: '#0c0c0C'
+                    }}>
                     Loading
+                    </div>
                 </Html>
             )
         } , []
@@ -55,7 +64,7 @@ const Canvas = () => {
                     </ThreeCanvas>
                 </ErrorBoundary>
             </div>
-            <Leva/>
+            <Leva hidden/>
         </>
     )
 }

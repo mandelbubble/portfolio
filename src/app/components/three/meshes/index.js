@@ -120,6 +120,11 @@ const Meshes = () => {
             ref.current.rotation.y = mapLinear(curve2, 0, 1, 0, 2 * Math.PI + rotation)
             ref.current.position.x = mapLinear(curve3, 0, 1, state.start[0], state.end[0])
             
+            const navBar = document.querySelector('#nav-bar')
+            if (!navBar) return
+            const endOfPage = scroll.visible(2/3, 1);
+        
+            navBar.style.opacity = !endOfPage ? 0 : 1;
         }
     )
 

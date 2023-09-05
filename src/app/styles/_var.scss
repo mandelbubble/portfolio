@@ -5,3 +5,48 @@ $red : #ff0020;
 $green : #00ff00;
 $blue : #0000ff;
 $rgb-gradient : linear-gradient(90deg, $red 0%, $green 50%, $blue 100%);
+
+@mixin border-layout {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: $white;
+    transition: background 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+
+    & > * {
+        position: relative;
+        width: calc(100% - 2px);
+        height: calc(100% - 2px);
+
+        background: $black;
+    }
+}
+
+@mixin gradient-decoration {
+    
+    &::after {
+        content: ' ';
+        height: 1px;
+        width: 100%;
+
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        transition: transform 0.3s cubic-bezier(0.47, 0, 0.745, 0.715);
+        transform-origin: bottom left;
+        transform: scaleX(0);
+
+        background: $rgb-gradient;
+    }
+
+    &:hover {
+        &::after { transform: scaleX(1); }
+    }
+}

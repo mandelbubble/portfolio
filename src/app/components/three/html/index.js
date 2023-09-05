@@ -2,10 +2,12 @@ import { useSearchParams } from "next/navigation";
 import { memo } from "react";
 import { Scroll} from "@react-three/drei";
 
+import CommandPrompt from "./command-prompt";
+
+import Button from "../../ui/Button";
 import RgbTitle from "../../ui/RgbTitle";
 
 import styles from '@/app/styles/components/three/scene.module.scss'
-import CommandPrompt from "./command-prompt";
 
 const Html = () => {
 
@@ -16,6 +18,9 @@ const Html = () => {
             <div className={styles.html}>
                 <RgbTitle>{`Hello ${searchParams.get('visitor') || 'world'}`}</RgbTitle>
                 <CommandPrompt/>
+                <Button className={styles.cta}>
+                    Hire me
+                </Button>
             </div>
         </Scroll>
     )

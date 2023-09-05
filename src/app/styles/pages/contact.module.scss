@@ -1,0 +1,120 @@
+@import '../var';
+
+.layout {
+    width: 100%;
+    min-height: 100vh;
+    
+    padding-top: 64px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 24px;
+    
+    // display: flex;
+    // flex-direction: row;
+
+    font-family: 'VT323', monospace;
+    color: $white;
+
+    
+    @media only screen and (max-width : 426px) {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}
+
+.flexContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.title {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 56px;
+    margin: 0;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+
+    @media only screen and (max-width : 768px) {
+        font-size: 48px;
+    }
+
+    @media only screen and (max-width : 426px) {
+        font-size: 40px;
+    }
+
+    @media only screen and (max-width : 376px) {
+        font-size: 32px;
+    }
+}
+
+
+.left {
+    position: relative;
+    width : calc(100% / 1.619);
+
+    display: flex;
+    flex-direction: column;
+
+    p { margin-bottom: 12px;}
+
+    @media only screen and (max-width : 1024px) {
+        width: 100%;
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+
+    .row { 
+        display: flex;
+        flex-direction: row;
+
+        &>div {
+            &:nth-child(1) {
+                margin-right: 4px;
+            }
+
+            &:nth-child(2) {
+                margin-left: 4px;
+            }
+        }
+
+        @media only screen and (max-width : 426px) {
+            flex-direction: column;
+
+            &>div {
+                &:nth-child(1) {
+                    margin-right: 0px;
+                }
+    
+                &:nth-child(2) {
+                    margin-left: 0px;
+                }
+            }
+        }
+    
+    }
+
+    & > * {
+        margin-bottom: 16px;
+    }
+
+    .cta { 
+        margin-top: 16px;
+        align-self: center;
+
+        &:hover , &:focus {
+            background: $rgb-gradient;
+        }
+    }
+
+
+    // .row>nth-child(1) {
+    //     margin-right: 4px;
+    // }
+
+    // .row:nth-child(2) {
+    //     margin-left: 4px;
+    // }
+}

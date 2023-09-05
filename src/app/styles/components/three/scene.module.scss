@@ -51,6 +51,20 @@ $margin : 24px;
 
 
     .cmd {
-        flex: 1
+        flex: 1;
+        margin-top: 32px;
+        margin-bottom: 24px;
+
+        @media only screen and (max-width : 426px) {
+            font-size: 14px;
+        }
+
+        @media only screen and (max-width : 376px) {
+            font-size: 12px;
+        }
+    }
+
+    .cta {
+        align-self: center;
     }
 }

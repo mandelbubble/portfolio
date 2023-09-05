@@ -1,0 +1,60 @@
+@import '../../var';
+
+.layout {
+
+    position: relative;
+    width: 100%;
+}
+
+
+
+.field {
+    @include border-layout;
+    border-radius: 4px;
+    background: $white;
+    transition: background 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    margin-top: 4px ;
+
+    input, textarea {
+        outline: none;
+        border: none;
+        border-radius: 4px;
+        padding: 8px;
+        color: $white;
+    }
+
+    &:has(input:focus), &:has(textarea:focus),
+    &:has(input:hover), &:has(textarea:hover) {
+        background: $rgb-gradient;
+    }
+}
+
+.error {
+    background: red;
+}
+
+.textArea {
+    height: 120px;
+}
+
+.input {
+    height: 40px;
+}
+
+.flexRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 16px;
+
+    .errorLabel {
+        color: $red;
+    }
+
+    svg {
+        width: 16px;
+        height: 16px;
+        fill: $green;
+    }
+}
