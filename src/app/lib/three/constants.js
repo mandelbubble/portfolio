@@ -24,7 +24,7 @@ const constants =  {
     camera : { 
         position : [0, 0.26, 0],
     },
-    hdrPath : '/3D/hdri/solitude_night_2K.hdr',
+    hdrPath : 'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/4k/dikhololo_night_4k.hdr',
     screen : {
         meshPath: '/3D/computer/meshes/screen.fbx',
         commandPromptShader : {
