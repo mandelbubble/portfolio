@@ -1,7 +1,10 @@
 import { memo } from "react"
 
-import styles from '@/app/styles/components/windows/window.module.scss'
 import WindowHeader from "./WindowHeader"
+
+import { open_Sans } from "@/app/lib/fonts"
+
+import styles from '@/app/styles/components/windows/window.module.scss'
 
 const Window = ({ 
     className = '', 
@@ -13,7 +16,7 @@ const Window = ({
     return (
         <div
             style={style}
-            className={`${styles.window} ${className}`}
+            className={`${styles.window} ${className} ${open_Sans.className}`}
         >
             <WindowHeader
                 iconPath={iconPath}

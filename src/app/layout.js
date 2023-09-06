@@ -1,6 +1,8 @@
 import Menu from './components/ui/Menu'
 import ReduxProvider from './components/utils/ReduxProvider'
 
+import { vt323 } from './lib/fonts'
+
 import '@/app/styles/globals.scss'
 
 export const metadata = {
@@ -11,7 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className={vt323.className}>
         <ReduxProvider>
           {children}
           <Menu/>

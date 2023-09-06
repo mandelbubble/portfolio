@@ -8,7 +8,7 @@ import Camera from "../Camera"
 
 import { selectDesktopBlob } from "@/app/lib/redux/slices/three"
 import threeConstants from '@/app/lib/three/constants'
-import PerlinDithering from "@/app/lib/three/shaders/perlin-dithering/PerlinDithering"
+import PerlinDithering from "@/app/lib/shaders/perlin-dithering/PerlinDithering"
 import constants from "@/app/lib/windows/constants"
 
 extend({ PerlinDithering })
@@ -20,14 +20,31 @@ const Desktop = ({ onTextureUpdate }) => {
     const camera = useRef()
     const scene = useRef(new Scene())
     const [texture, setTexture] = useState(new Texture())
+    const [time, setTime] = useState(0)
     const renderTarget = useFBO(constants.resolution.width, constants.resolution.height)
     const textureUrl = useSelector(selectDesktopBlob)
     const p5Texture = useRef(null)
 
     const get = useThree(state => state.get)
+    const invalidate = useThree(state => state.invalidate)
 
     const camPosition = useMemo(() => [0, 0, 5] , [])
     const perlinDitheringResolution = useMemo(() => new Vector2(shaderSettings.resolution.width, shaderSettings.resolution.height), [])
+
+    useEffect(
+         () => {
+             const interval = setInterval(
+                 () => {
+                     setTime(time => time + 0.02);
+                     invalidate()
+                } , 1000/ 22
+            )
+
+            return (
+                () => clearInterval(interval)
+            )
+        } , [invalidate]
+    )
 
     useEffect(
         () => {
@@ -101,6 +118,7 @@ const Desktop = ({ onTextureUpdate }) => {
                     <perlinDithering
                         uTexture={p5Texture.current}
                         resolution={perlinDitheringResolution}
+                        time={time}
                     />
                 </mesh>
             </group>

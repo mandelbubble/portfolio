@@ -4,15 +4,10 @@
     width: 100%;
     height: 56px;
     
-    font-family: 'VT323', monospace;
-
-    // background: #070707;
-    // box-shadow: 0px -20px 13px 20px rgba(0, 0, 0 , 0.74);
-
-    position: absolute;
+    position: fixed;
     top: 0;
-    padding-left: 32px;
-    padding-right: 32px;
+    padding-left: 40px;
+    padding-right: 40px;
 
     display: flex;
     align-items: center;
@@ -20,6 +15,11 @@
     opacity: 1;
 
     transition: opacity 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    @media only screen and (max-width : 426px) {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
 
     button {
         pointer-events: all;
@@ -40,7 +40,6 @@
 
             color : $white;
             font-size: 24px;
-            font-family: 'VT323', monospace;
             text-transform: uppercase;
 
             opacity: 0.8;
@@ -51,6 +50,11 @@
             span { opacity: 1;}
         }
     }
+}
+
+.withBackground {
+    background: $black;
+    box-shadow: 1px 5px 25px 2px $black;
 }
 
 .hidden { opacity: 0; }
@@ -89,7 +93,6 @@
         list-style-type: none;
         text-transform: uppercase;
         text-align: center;
-        font-family: 'VT323', monospace;
     }
 
 

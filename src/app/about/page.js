@@ -4,12 +4,14 @@ import { memo } from "react"
 import Button from "../components/ui/Button"
 
 import styles from '@/app/styles/pages/about.module.scss'
+import RgbTitle from "../components/ui/RgbTitle"
 
 const About = () => {
     return (
         <div className={styles.layout}>
             <div className={styles.left}>
-                <h1 className={styles.title}> 🌈 About </h1>
+                {/* <h1 className={styles.title}> 🌈 About </h1> */}
+                <RgbTitle className={styles.title}> About</RgbTitle>
                 <div className={styles.text}>
                     <p>My name is Alex and I am a software developer. I fell in love with programming at twelve and never stopped since then. After five years as a Front-End then Fullstack engineer, I decided to take two years for myself to try my hands at everything I have ever dreamed of learning (from Blender to Unreal Engine to embedded electronics to watercolor paintings). On top of it, I’m a lucky mom since March 2023.</p>
                     <p>I am now eager to come back to work and very (very) excited to do so ! There are so many things I miss in my work such as always learning new things, team spirit, shipping meaningful features for end users and large scale architectures.</p>

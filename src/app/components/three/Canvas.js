@@ -7,6 +7,7 @@ import { Html, ScrollControls } from "@react-three/drei";
 import { Canvas as ThreeCanvas} from "@react-three/fiber";
 
 import Scene from "./Scene";
+import RgbTitle from "../ui/RgbTitle";
 
 import styles from '@/app/styles/components/three/scene.module.scss'
 
@@ -33,8 +34,8 @@ const Canvas = () => {
                         width: '100vw',
                         height: '100vh',
                         background: '#0c0c0C'
-                    }}>
-                    Loading
+                    }} className={styles.loader}>
+                        <RgbTitle>LOADING</RgbTitle>
                     </div>
                 </Html>
             )

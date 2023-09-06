@@ -2,25 +2,37 @@
 
 import { memo, useCallback, useMemo, useState } from "react"
 
+import { vt323 } from "@/app/lib/fonts"
 
 import styles from '@/app/styles/components/ui/menu.module.scss'
 import { usePathname } from "next/navigation"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 const Menu = () => {
     
     const [isOpen, setIsOpen] = useState(false)
-
     const pathname = usePathname()
+    const router = useRouter()
 
     const navBarClassName = useMemo(
         () => {
-           return `${styles.navBar} ${pathname === '/' ? styles.hidden : ''}`
+           return `${styles.navBar} ${pathname === '/' ? styles.hidden : styles.withBackground} ${vt323.className}`
         } , [pathname]
+    )
+
+
+    const onMenuLinkClick = useCallback(
+        url => event => {
+            event.preventDefault()
+            setIsOpen(false)
+            router.push(url)
+        } , [router]
     )
 
     const renderMenuLink = useCallback(
         ({ url = '#', label, soon = false }) => {
+            const onClick = onMenuLinkClick(url)
             return (
                 <li className={`
                     ${styles.link}
@@ -28,13 +40,13 @@ const Menu = () => {
                 `} key={label}>
                     <Link 
                         href={url} 
-                        onClick={() => { console.log(click)}}> 
+                        onClick={onClick}> 
                         <span className={styles.label}>{label}</span>
                         {soon && <span className={styles.soon}>coming soon</span>}
                     </Link>
                 </li>
             )
-        } , [pathname]
+        } , [pathname, onMenuLinkClick]
     )
 
     const links = useMemo(
@@ -63,7 +75,7 @@ const Menu = () => {
                         <rect x="0.940552" y="13.4448" width="7" height="7" rx="1.5" stroke="#0000FF"/>
                         <rect x="12.9406" y="13.4448" width="7" height="7" rx="1.5" stroke="#00FF00"/>
                     </svg>
-                    <span>menu</span>
+                    <span className={vt323.className}>menu</span>
                 </button>
                 <div className={styles.crafted}>
                     crafted with <span>♡</span>
