@@ -8,6 +8,7 @@ import styles from '@/app/styles/components/windows/command-prompt.module.scss'
 
 const CommandPrompt = ({
     className = '', 
+    cmdHolderClassName = '',
     children,
     customResolution,
 }) => {
@@ -18,7 +19,7 @@ const CommandPrompt = ({
             label={constants.programs.cmd.label}
             iconPath={constants.programs.cmd.icon}
         >
-            <div className={styles.main}>
+            <div className={`${styles.main} ${cmdHolderClassName}`}>
                 <div className={styles.cmd}>
                     <div>
                         {`Microsoft❮R❯ Windows DOS \n❮C❯ Copyright Microsoft Corp 1990-2001.\n`}

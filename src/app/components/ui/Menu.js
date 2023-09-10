@@ -1,6 +1,6 @@
 "use client"
 
-import { memo, useCallback, useMemo, useState } from "react"
+import { memo, useCallback, useMemo, useState, useRef } from "react"
 
 import { vt323 } from "@/app/lib/fonts"
 
@@ -14,10 +14,13 @@ const Menu = () => {
     const [isOpen, setIsOpen] = useState(false)
     const pathname = usePathname()
     const router = useRouter()
+    const ref = useRef()
 
     const navBarClassName = useMemo(
         () => {
-           return `${styles.navBar} ${pathname === '/' ? styles.hidden : styles.withBackground} ${vt323.className}`
+            return `${styles.navBar} ${pathname === '/' 
+                ? `${styles.hidden} ${styles.home}` 
+                : styles.withBackground} ${vt323.className}`
         } , [pathname]
     )
 
@@ -65,6 +68,16 @@ const Menu = () => {
         } , []
     )
 
+
+    const onClickWrapper = useCallback(
+        event => {
+            event.preventDefault()
+            if (ref.current.contains(event.target)) return
+            onToggle()
+        } , [onToggle]
+    )
+
+
     return (
         <>
             <div className={navBarClassName} id='nav-bar'>
@@ -81,11 +94,11 @@ const Menu = () => {
                     crafted with <span>♡</span>
                 </div>
             </div>
-            <div className={`
+            <div onClick={onClickWrapper} className={`
                 ${styles.sideMenuWrapper}
                 ${isOpen ? '' : styles.collapsed}
             `}>
-                <div className={styles.sideMenu}>
+                <div className={styles.sideMenu} ref={ref}>
                     <div className={styles.grunge}/>
                     <menu className={styles.links}>
                        { links.map(renderMenuLink) }
@@ -99,8 +112,6 @@ const Menu = () => {
             </div>
         </>
     )
-
-    return null
 }
 
 export default memo(Menu)

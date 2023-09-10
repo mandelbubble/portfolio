@@ -65,10 +65,16 @@ const CommandPromptSketch = () => {
         }) , []
     )
 
-    return <P5
-        style={style}
-        setup={setup}
-    />
+    const wrapperStyle = useMemo(() => ({
+        opacity: 0
+    }), [])
+
+    return <div style={wrapperStyle}>
+        <P5
+            style={style}
+            setup={setup}
+        />
+    </div>
 }
 
 export default memo(CommandPromptSketch)

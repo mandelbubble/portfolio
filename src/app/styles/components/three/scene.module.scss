@@ -36,7 +36,8 @@ $margin : 24px;
 
 .html {
     position: relative;
-    height: 100vh;
+    min-height: 100vh;
+    max-height: 100vh;
     width : calc((100vw - ($margin * 2)) * (100 - 38.2)/100);
     top: 300vh;
     display: flex;
@@ -44,6 +45,8 @@ $margin : 24px;
     margin-left: $margin;
     padding-top: 60px;
     padding-bottom: 32px;
+    opacity: 0;
+    transition: opacity 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
 
     @media only screen and (max-width : 1025px) {
         width: calc(100% - (2 * $margin));
@@ -51,11 +54,18 @@ $margin : 24px;
         padding-left: $margin;
     }
 
+    .cmdHolder {
+        overflow-y: scroll;
+    }
 
     .cmd {
         flex: 1;
+        min-height: 100%;
+        max-height: 100%;
+        position: relative;
+        margin-bottom: 32px;
         margin-top: 32px;
-        margin-bottom: 24px;
+        overflow: hidden;
 
         @media only screen and (max-width : 426px) {
             font-size: 14px;
@@ -68,6 +78,7 @@ $margin : 24px;
 
     .cta {
         align-self: center;
+        background: $rgb-gradient;
     }
 }
 

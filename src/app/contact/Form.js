@@ -28,7 +28,6 @@ const Form = () => {
         displayErrors: false,
         isPending: false,
         isSubmitted: false,
-        // isSent: false,
         errorOnSend: false,
     })
 
@@ -100,7 +99,6 @@ const Form = () => {
 
                 const { error } = await res.json()
                 const errorMessage = 'Something went wrong'
-                console.log(res, error)
 
                 updateFormStatus(status => ({
                     ...status,

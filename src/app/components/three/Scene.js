@@ -1,5 +1,6 @@
 import { folder, useControls } from "leva";
 import { memo , useEffect, useRef, useState } from "react"
+import tunnel from "tunnel-rat";
 
 import Camera from "./Camera";
 import Environment from "./Environment";
@@ -7,6 +8,8 @@ import Html from "./html";
 import Meshes from "./meshes";
 
 import constants from "@/app/lib/three/constants";
+
+const ui = tunnel()
 
 const Scene = () => {
 
@@ -33,7 +36,7 @@ const Scene = () => {
 
 return (
         <>
-            <Html/>
+            <Html/> 
             <Environment/>
             <Meshes/>
             <Camera

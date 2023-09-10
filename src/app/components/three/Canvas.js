@@ -3,7 +3,7 @@
 import { Leva } from "leva";
 import { Suspense, memo, useMemo } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import { Html, ScrollControls } from "@react-three/drei";
+import { Html, Preload, ScrollControls } from "@react-three/drei";
 import { Canvas as ThreeCanvas} from "@react-three/fiber";
 
 import Scene from "./Scene";
@@ -62,6 +62,7 @@ const Canvas = () => {
                                 <Scene/>
                             </ScrollControls>
                         </Suspense>
+                        <Preload all/>
                     </ThreeCanvas>
                 </ErrorBoundary>
             </div>
@@ -71,3 +72,4 @@ const Canvas = () => {
 }
 
 export default memo(Canvas)
+
